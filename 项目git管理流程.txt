@@ -1,0 +1,88 @@
+git基本信息
+https地址：https://github.com/zMuShui/SZTU_SmartCarLock.git
+项目git日志
+
+24/4/9
+建立git库
+追踪文件<项目git管理流程.txt>和文件夹主板部分与主板日志
+在GitHub建立了origin和新的项目SZTU_SmartCarLock
+将文件传入库中
+
+
+
+
+
+
+
+
+
+////git 与github 使用////
+1，下载git并注册消息
+git config  #查看本机是否配置了个人信息
+git config --global user.name "……"  #定义全局的用户名
+git config --global user.email "……"  #定义全局的邮件地址
+git config --global user.password "……"  #配置密码
+git config --list  #查看本地配置信息
+git config --global --list  #查看全局配置信息
+
+2，建立文件夹和使用 $ git init 建立git库
+3，使用$ git add 文件名 追踪文件夹
+4，当文件有改变时使用 $ git commit -m "xxx"  记录修改
+
+将文件传上github和把github的文件传入本地
+1，在C：\users\你的用户名 .ssh打开git，运行ssh -keygen -t rsa -C “你在GitHub上注册的邮箱”
+然后可以在C：\users\你的用户名 .ssh中看到一个私钥（id_ras），和id_ras.pub(公钥)
+然后copy公钥到GitHub的setting中的ssh keys
+（这一步是为了让后面传入文件比较方便）
+2，使用 $ git remote add <远程仓库名> <url> 建立远程git库
+3,每一次在本地修改完后，使用$git push <远程仓库名> <branch>,将本地分支上传到库里
+4，使用$ git clone [仓库地址] 把云端仓库地址导入本地 ,以后使用 $ git pull  <远程仓库名> <branch>，将库的分支导入本地
+
+具体流程就是追踪文件，然后记录修改，并将修改传入云端（github）
+
+下附部分管理代码
+
+创建版本库
+git clone <url>：从网络上某个地址拷贝仓库 (repository) 到本地
+git init：在本地的当前目录里初始化 git 仓库，会在当前目录生成一个隐藏的 .git 目录
+
+修改与提交
+git status: 查看当前仓库的状态
+git diff： 显示暂存区和工作区的差异
+git add: 添加当前目录下的所有文件到暂存区
+git add <file1><file2>: 添加一个或多个文件到暂存区
+git mv <old> <new>: 文件改名
+git rm <file>: 将文件从暂存区和工作区中删除
+git rm --cached <file>: 把文件从暂存区域移除，但仍然保留在当前工作目录中
+git commit -m "commit message": 提交暂存区到本地仓库中,提交信息最好能体现更改了什么
+
+查看提交历史
+git log: 查看当前版本及之前的 commit 记录
+git log -p <file>: 查看指定文件的提交历史
+git blame <file>: 以列表形式查看指定文件的提交历史
+
+分支与标签
+git branch: 列出分支基本信息
+git branch <new-branch>: 创建新分支
+git branch -d <branch>: 删除分支
+git checkout <branch/tag>: 切换到指定分支或标签
+git checkout -b <branch>： 创建并切换到新分支
+git switch <branch>:切换到指定分支
+git switch -c <branch>:创建并切换到新分支
+git tag: 列出所有本地标签
+git tag <tagname>: 基于最新提交创建标签
+git tag -d <tagname>: 删除标签
+
+合并与衍合
+git merge <branch>: 合并指定分支到当前分支
+git rebase <branch>: 衍合指定分支到当前分支
+
+远程操作
+git remote -v: 查看所有远程版本库
+git remote show <remote>: 显示某个远程仓库的信息
+git remote add <shortname> <url>: 添加远程版本库
+git fetch <remote>: 从远程库获取代码
+git pull <remote> <branch>: 下载代码及快速合并
+git push <remote> <branch>: 上传代码及快速合并
+git push <remote> :<branch/tag>: 删除远程分支或标签
+git push --tags: 上传所有标签
